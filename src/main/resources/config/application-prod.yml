@@ -1,0 +1,30 @@
+server:
+  port: 8002
+  servlet:
+    context-path: /
+
+person:
+  name: 约翰.斯密斯
+  age: 37
+  sponse: Jane Smith
+  children:
+  - name: Jimmy Smith
+    age: 8
+  - name: Jenny Smith
+    age: 6
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.56.102:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: SYF!123mysql
+    dirver-class-name: com.mysql.jdbc.Driver
+  redis:
+    host: 192.168.56.102
+    port: 6379
+    password:
+    database: 0
+
+
+
+

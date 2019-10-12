@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springboot.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.example.springboot.model.User">
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,username,email,createtime
+    </sql>
+    <select id="getAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM users where id>0 order by id desc limit 20
+    </select>
+    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM users where id=#{id}
+    </select>
+    <insert id="insert" parameterType="com.example.springboot.model.User">
+        INSERT INTO
+            users
+            (username,email)
+        VALUES
+        (#{username},#{email})
+    </insert>
+    <update id="update" parameterType="com.example.springboot.model.User">
+        UPDATE
+            users
+        SET
+            <if test="username != null ">username=#{username},</if>
+            <if test="email != null ">email=#{email}</if>
+        WHERE
+            id=#{id}
+    </update>
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM
+            users
+        WHERE
+            id=#{id}
+    </delete>
+</mapper>

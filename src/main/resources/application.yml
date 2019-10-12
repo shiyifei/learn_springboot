@@ -1,0 +1,14 @@
+server:
+port: 8001
+servlet:
+context-path: /
+
+#使用spring.prifles.active属性来设置对应的环境, resources/config目录下的application-{profile}.properties/yml
+spring:
+  profiles:
+    active: prod
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.example.springboot.model
